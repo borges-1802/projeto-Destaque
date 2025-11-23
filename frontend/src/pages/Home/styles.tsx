@@ -31,6 +31,36 @@ export const Header = styled.div`
   }
 `;
 
+export const HideTrendingMobile = styled.div`
+  display: flex;
+
+  @media (max-width: 508px) {
+    display: none;
+  }
+`;
+
+export const HeaderTitle = styled.h1`
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  line-height: 1.2;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 1.75rem;
+    gap: 0.35rem;
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+`;
+
 export const Panel = styled.div`
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(6px);
@@ -100,6 +130,48 @@ export const RepoLink = styled.a`
   align-items: center;
   gap: 0.5rem;
   &:hover { text-decoration: underline; }
+`;
+
+export const PopularBadge = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f59e0b;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  margin: 0 auto;
+
+  @media (max-width: 780px) {
+    width: 100%;
+    justify-content: center;
+  }
+`;
+
+export const PopularIconWrap = styled.div`
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PopularLabelSmall = styled.div`
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+`;
+
+export const PopularLabelBig = styled.div`
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
 `;
 
 export const MetricsGrid = styled.div`
@@ -193,6 +265,37 @@ export const DonutCenter = styled.div`
   }
 `;
 
+export const ChartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+
+  @media(min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+export const ChartWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  height: 300px;
+
+  @media(min-width: 768px) {
+    flex: 1;
+    min-width: 260px;
+  }
+`;
+
+export const LegendWrapper = styled.div`
+  width: 100%;
+  padding: 8px 6px;
+  align-self: center;
+
+  @media(min-width: 768px) {
+    width: 220px;
+  }
+`;
 
 export const LoaderWrap = styled.div`
   width: 100%;
@@ -258,6 +361,16 @@ export const FooterInner = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0 8px;
+`;
+
+export const SocialLabel = styled.div`
+  font-size: 13px;
+  color: #64748b;
+  margin-right: 8px;
+
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const IdeasList = styled.ul`

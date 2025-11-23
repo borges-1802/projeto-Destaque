@@ -34,7 +34,8 @@ interface CommitWeek {
 
 interface CommitData {
   week: string;
-  commits: number; }
+  commits: number;
+}
 
 // Função para gerar cores aleatórias
 const generateRandomColors = (count: number): string[] => {
@@ -231,7 +232,12 @@ export default function GitHubDashboard() {
     <S.Page>
       <S.Container>
         <S.Header>
-          <h1><TrendingUp size={32} />Dashboard do GitHub</h1>
+          <S.HeaderTitle>
+            <S.HideTrendingMobile>
+              <TrendingUp size={32} />
+            </S.HideTrendingMobile>
+            Dashboard do GitHub
+          </S.HeaderTitle>
           <p>Simples site com métricas e estatísticas de repositórios do GitHub de acordo com a popularidade (mais stars) e os termos pesquisados.
           </p>
         </S.Header>
@@ -267,37 +273,18 @@ export default function GitHubDashboard() {
             </div>
 
             {isMostPopular && (
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '10px 16px',
-                background: '#f59e0b',
-                borderRadius: 10,
-                boxShadow: '0 4px 12px rgba(245, 158, 11, 0.25)',
-                border: '2px solid rgba(255, 255, 255, 0.5)',
-              }}>
-                <div style={{
-                  width: 32,
-                  height: 32,
-                  background: 'rgba(255, 255, 255, 0.3)',
-                  borderRadius: 8,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+              <S.PopularBadge>
+                <S.PopularIconWrap>
                   <Star size={18} style={{ color: '#fff', fill: '#fff' }} />
-                </div>
+                </S.PopularIconWrap>
+
                 <div>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    Repositório
-                  </div>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', lineHeight: 1.2 }}>
-                    Mais Popular
-                  </div>
+                  <S.PopularLabelSmall>Repositório</S.PopularLabelSmall>
+                  <S.PopularLabelBig>Mais Popular</S.PopularLabelBig>
                 </div>
-              </div>
+              </S.PopularBadge>
             )}
+
           </div>
         </S.Panel>
 
@@ -386,9 +373,9 @@ export default function GitHubDashboard() {
 
           <S.ChartPanel>
             <h3><Code size={18} /> Linguagens do Repositório</h3>
-            <div style={{ display: 'flex', alignItems: 'stretch', gap: 12, height: 300 }}>
-              <div style={{ flex: 1, minWidth: 260, position: 'relative' }}>
-                <ResponsiveContainer width="100%" height="100%">
+            <S.ChartContainer>
+              <S.ChartWrapper>
+                <ResponsiveContainer width="100%" height={300}>
                   <PieChart>
                     <Pie
                       data={languages}
@@ -433,9 +420,9 @@ export default function GitHubDashboard() {
                     </>
                   )}
                 </S.DonutCenter>
-              </div>
+              </S.ChartWrapper>
 
-              <div style={{ width: 220, padding: '8px 6px', alignSelf: 'center' }}>
+              <S.LegendWrapper>
                 <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: '#0f172a' }}>Linguagens</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 230, overflowY: 'auto', paddingRight: 4 }}>
                   {languages.map((l, i) => {
@@ -463,8 +450,8 @@ export default function GitHubDashboard() {
                     );
                   })}
                 </div>
-              </div>
-            </div>
+              </S.LegendWrapper>
+            </S.ChartContainer>
           </S.ChartPanel>
         </S.ChartsGrid>
         <S.FooterDivider />
@@ -481,7 +468,7 @@ export default function GitHubDashboard() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ fontSize: 13, color: '#64748b', marginRight: 8 }}>Redes Sociais:</div>
+              <S.SocialLabel>Redes Sociais:</S.SocialLabel>
               <S.IdeasList>
                 <li>
                   <a href="https://github.com/borges-1802" target="_blank" rel="noopener noreferrer">
