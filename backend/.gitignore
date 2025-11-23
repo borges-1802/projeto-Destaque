@@ -5,3 +5,11 @@
 .env.production
 .env.test
 /__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv
+env/
+venv/
+.Python
+*.log

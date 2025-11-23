@@ -227,6 +227,14 @@ def clear_cache(secret: Optional[str] = Query(None)):
     CACHE.clear()
     return {"status": "ok", "message": "cache limpo"}
 
+@app.get("/ping")
+async def ping():
+    return {"status": "ok"}
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=True)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run( "main:app", host="0.0.0.0", port=port, reload=False
+                if os.getenv("ENVIRONMENT") == "production"
+                else True
+                )
