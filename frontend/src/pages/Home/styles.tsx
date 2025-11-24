@@ -108,19 +108,68 @@ export const SearchButton = styled.button`
   &:hover { transform: translateY(-2px); }
 `;
 
+export const PanelHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  .titleBlock {
+    flex: 1 1 0;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 780px) {
+    justify-content: center;
+    align-items: center;
+
+    .titleBlock {
+      align-items: center;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .actions {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+`;
+
 export const RepoTitle = styled.h2`
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: 700;
   color: #0f172a;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.15;
+  word-break: break-word;
+  overflow-wrap: break-word;
 `;
 
 export const RepoDescription = styled.p`
   color: #475569;
-  line-height: 1.6;
-  margin-bottom: 0.75rem;
-  font-size: 0.96rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+  font-size: clamp(0.88rem, 1.6vw, 0.98rem);
+  max-width: 80ch;
+
+  @media (max-width: 780px) {
+    max-width: 100%;
+  }
 `;
+
 
 export const RepoLink = styled.a`
   color: #2563eb;

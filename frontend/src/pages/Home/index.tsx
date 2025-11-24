@@ -265,28 +265,32 @@ export default function GitHubDashboard() {
           Repositório Atual:
         </h2>
         <S.Panel style={{ marginBottom: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-            <div style={{ flex: 1, minWidth: 250 }}>
+          <S.PanelHeader>
+            <div className="titleBlock">
               <S.RepoTitle>{repoData.full_name}</S.RepoTitle>
               <S.RepoDescription>{repoData.description}</S.RepoDescription>
-              <S.RepoLink href={repoData.html_url} target="_blank" rel="noopener noreferrer">Ver no GitHub →</S.RepoLink>
+              <S.RepoLink href={repoData.html_url} target="_blank" rel="noopener noreferrer">
+                Ver no GitHub →
+              </S.RepoLink>
             </div>
 
-            {isMostPopular && (
-              <S.PopularBadge>
-                <S.PopularIconWrap>
-                  <Star size={18} style={{ color: '#fff', fill: '#fff' }} />
-                </S.PopularIconWrap>
+            <div className="actions">
+              {isMostPopular && (
+                <S.PopularBadge>
+                  <S.PopularIconWrap>
+                    <Star size={18} style={{ color: '#fff', fill: '#fff' }} />
+                  </S.PopularIconWrap>
 
-                <div>
-                  <S.PopularLabelSmall>Repositório</S.PopularLabelSmall>
-                  <S.PopularLabelBig>Mais Popular</S.PopularLabelBig>
-                </div>
-              </S.PopularBadge>
-            )}
-
-          </div>
+                  <div>
+                    <S.PopularLabelSmall>Repositório</S.PopularLabelSmall>
+                    <S.PopularLabelBig>Mais Popular</S.PopularLabelBig>
+                  </div>
+                </S.PopularBadge>
+              )}
+            </div>
+          </S.PanelHeader>
         </S.Panel>
+
 
         <h2 style={{
           fontSize: "1.3rem",
